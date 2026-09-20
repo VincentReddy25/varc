@@ -1,88 +1,135 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const projects = [
-  { 
-    title: 'Modern Villa', 
-    category: 'Residential', 
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2071' 
-  },
-  { 
-    title: 'Skyline Plaza', 
-    category: 'Commercial', 
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070' 
-  },
-  { 
-    title: 'Urban Loft', 
-    category: 'Renovation', 
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2070' 
-  },
-  { 
-    title: 'Corporate HQ', 
-    category: 'Commercial', 
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069' 
-  },
-  { 
-    title: 'Luxury Estate', 
-    category: 'Residential', 
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2070' 
-  },
-  { 
-    title: 'Modern Retail', 
-    category: 'Commercial', 
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=2070' 
-  }
+// Import project images
+import project1 from '../assets/projects/1.jpeg';
+import project2 from '../assets/projects/2.jpeg';
+import project3 from '../assets/projects/3.jpeg';
+import project4 from '../assets/projects/4.jpeg';
+import project5 from '../assets/projects/5.jpeg';
+import project6 from '../assets/projects/6.jpeg';
+import project7 from '../assets/projects/7.jpeg';
+import project8 from '../assets/projects/8.jpeg';
+import project9 from '../assets/projects/9.jpeg';
+import project10 from '../assets/projects/10.jpeg';
+import project11 from '../assets/projects/11.jpeg';
+
+// Fallback local images
+const localProjects = [
+  { image: project1 },
+  { image: project2 },
+  { image: project3 },
+  { image: project4 },
+  { image: project5 },
+  { image: project6 },
+  { image: project7 },
+  { image: project8 },
+  { image: project9 },
+  { image: project10 },
+  { image: project11 }
 ];
 
+// Google Drive Folder ID: 1KztLZjzs4wkBh9Sa8rkuaWpZhmPJfbNz
+// To make this dynamic, you'll need to deploy a Google Apps Script.
+// Replace this with your deployed Google Apps Script URL.
+const GDRIVE_SCRIPT_URL = ""; 
+
 const Portfolio = () => {
+  const [projects, setProjects] = useState(localProjects);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchDriveImages = async () => {
+      if (!GDRIVE_SCRIPT_URL) return;
+      
+      setIsLoading(true);
+      try {
+        const response = await fetch(GDRIVE_SCRIPT_URL);
+        const data = await response.json();
+        
+        // Map Google Drive file IDs to direct view URLs
+        const driveProjects = data.map(file => ({
+          image: `https://lh3.googleusercontent.com/d/${file.id}=s1600`
+        }));
+        
+        if (driveProjects.length > 0) {
+          setProjects(driveProjects);
+        }
+      } catch (error) {
+        console.error("Error fetching images from Google Drive:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchDriveImages();
+  }, []);
+
+  const visibleProjects = projects.slice(0, 8);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
+
   return (
-    <section id="portfolio" className="portfolio" style={{ padding: '100px 0', background: '#0a0a0a' }}>
+    <section id="portfolio" className="portfolio">
       <div className="container">
         <div className="section-title reveal">
           <h2>Featured Projects</h2>
           <div className="accent"></div>
         </div>
-        <div className="portfolio-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: '1.5rem',
-          marginTop: '3rem'
-        }}>
-          {projects.map((project, index) => (
-            <div key={index} className="portfolio-item reveal" style={{
-              position: 'relative',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              height: '300px',
-              cursor: 'pointer'
-            }}>
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'transform 0.5s ease'
-                }} 
-              />
-              <div className="portfolio-overlay" style={{
-                position: 'absolute',
-                bottom: '0',
-                left: '0',
-                right: '0',
-                background: 'linear-gradient(transparent, rgba(0,0,0,0.9))',
-                padding: '2rem',
-                transform: 'translateY(20px)',
-                opacity: '0',
-                transition: 'all 0.3s ease'
-              }}>
-                <span style={{ color: 'var(--primary)', fontSize: '0.875rem', fontWeight: '600' }}>{project.category}</span>
-                <h3 style={{ margin: '0.5rem 0 0' }}>{project.title}</h3>
+        <div className="portfolio-grid">
+          {isLoading ? (
+            <div className="loading-projects">Loading projects...</div>
+          ) : (
+            visibleProjects.map((project, index) => (
+              <div key={index} className="portfolio-item reveal">
+                <img 
+                  src={project.image} 
+                  alt={`Project ${index + 1}`} 
+                  loading="lazy"
+                />
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
+        
+        {projects.length > 8 && (
+          <div className="view-more-container reveal">
+            <button className="btn view-more-btn" onClick={() => setIsModalOpen(true)}>
+              View More Projects
+            </button>
+          </div>
+        )}
       </div>
+
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setIsModalOpen(false)}>
+              <i className="fas fa-times"></i>
+            </button>
+            <h2 className="modal-title">All Projects</h2>
+            <div className="modal-grid">
+              {projects.map((project, index) => (
+                <div key={`modal-${index}`} className="portfolio-item">
+                  <img 
+                    src={project.image} 
+                    alt={`Project ${index + 1}`} 
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

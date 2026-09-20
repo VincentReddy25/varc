@@ -5,8 +5,8 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="container">
         <div className="hero-content reveal">
+          <span className="hero-subtitle">Architecture | Construction | Development</span>
           <h1>Building <span>Dreams</span>.<br />Crafting Excellence.</h1>
-          <p>Elegance in every detail. From blueprint to reality, we deliver quality, innovation, and reliability.</p>
           <div className="cta-group">
             <button 
               onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })} 

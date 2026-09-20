@@ -1,16 +1,69 @@
-# React + Vite
+# V-Arc Construction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+V-Arc Construction is a premium construction and architecture portfolio website built for **Vikram Vaddi**. This professional platform showcases high-end residential and commercial construction projects, highlighting a commitment to quality, innovation, and architectural excellence.
 
-Currently, two official plugins are available:
+![V-Arc Construction Preview](./src/assets/landscape.jpeg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- **Modern & Premium Design**: A sleek, dark-themed aesthetic using Google Fonts (Outfit) and custom HSL colors.
+- **Dynamic Project Portfolio**: An image-focused gallery showcasing recent works with a "View More" modal system.
+- **Interactive Services Section**: Detailed breakdown of architectural and construction services offered.
+- **Client Testimonials**: A smooth, auto-scrolling carousel of client feedback and ratings.
+- **Responsive Navigation**: A mobile-friendly navbar with a custom 900px breakpoint for optimized tablet viewing.
+- **Google Maps Integration**: Live location tracking for the office headquarters.
+- **SEO Optimized**: Semantic HTML5 structure with proper meta tags and descriptive titles.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React.js (Vite)
+- **Styling**: Vanilla CSS3 (Custom Design System)
+- **Icons**: Font Awesome 6.4.0
+- **Typography**: Google Fonts (Outfit)
+- **Animations**: Custom CSS scroll-reveal and transition systems
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Structure
+
+```bash
+├── public/              # Static assets (logo, etc.)
+├── src/
+│   ├── assets/          # Project images and landscapes
+│   │   └── projects/    # Local project gallery assets
+│   ├── components/      # Reusable React components
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Services.jsx
+│   │   ├── Portfolio.jsx
+│   │   ├── Testimonials.jsx
+│   │   └── Contact.jsx
+│   ├── App.jsx          # Main application logic
+│   └── index.css        # Global styles & design tokens
+└── index.html           # Entry point
+```
+
+## 🏁 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 📄 License
+
+This project is built as a professional portfolio for V-Arc Construction. All rights reserved.
+
+---
+Built with ❤️ by Vincent Reddy. Thanugundla

@@ -2,11 +2,13 @@ import React from 'react';
 
 const services = [
   { icon: 'fas fa-home', title: 'Residential Construction', desc: 'Creating beautiful, functional homes tailored to your lifestyle and needs.' },
-  { icon: 'fas fa-city', title: 'Commercial Projects', desc: 'Developing state-of-the-art commercial spaces that drive business success.' },
-  { icon: 'fas fa-hammer', title: 'Renovations', desc: 'Transforming existing spaces with modern designs and superior craftsmanship.' },
-  { icon: 'fas fa-pencil-ruler', title: 'Design-Build', desc: 'Integrated design and construction services for a seamless project journey.' },
-  { icon: 'fas fa-hard-hat', title: 'Project Management', desc: 'Expert oversight ensuring projects are completed on time and within budget.' },
-  { icon: 'fas fa-leaf', title: 'Green Building', desc: 'Sustainable construction practices for an eco-friendly future.' }
+  { icon: 'fas fa-city', title: 'Commercial Construction', desc: 'Developing state-of-the-art commercial spaces that drive business success.' },
+  { icon: 'fas fa-hammer', title: 'Renovations and Remodeling', desc: 'Transforming existing spaces with modern designs and superior craftsmanship.' },
+  { icon: 'fas fa-tasks', title: 'Project Management', desc: 'Expert oversight ensuring projects are completed on time and within budget.' },
+  { icon: 'fas fa-pencil-ruler', title: 'Design-Build Services', desc: 'Integrated design and construction services for a seamless project journey.' },
+  { icon: 'fas fa-tools', title: 'Custom Home Building', desc: 'Building unique homes from the ground up, customized to your vision.' },
+  { icon: 'fas fa-leaf', title: 'Green Building', desc: 'Sustainable construction practices for an eco-friendly future.' },
+  { icon: 'fas fa-couch', title: 'Interior Works', desc: 'Premium interior finishing, woodwork, and aesthetic enhancements.' }
 ];
 
 const Services = () => {

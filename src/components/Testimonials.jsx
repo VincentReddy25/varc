@@ -26,7 +26,9 @@ const Testimonials = () => {
   ];
 
   // Duplicate reviews to create a seamless loop
-  const allReviews = [...reviews, ...reviews, ...reviews];
+  const allReviews1 = [...reviews, ...reviews, ...reviews, ...reviews];
+  const allReviews2 = [...reviews].reverse();
+  const allReviewsTrack2 = [...allReviews2, ...allReviews2, ...allReviews2, ...allReviews2];
 
   return (
     <section id="testimonials" className="testimonials">
@@ -36,8 +38,25 @@ const Testimonials = () => {
       </div>
       <div className="testimonials-container">
         <div className="testimonials-track">
-          {allReviews.map((review, index) => (
-            <div key={`${review.id}-${index}`} className="testimonial-card">
+          {allReviews1.map((review, index) => (
+            <div key={`t1-${review.id}-${index}`} className="testimonial-card">
+              <div className="rating">
+                {[...Array(review.rating)].map((_, i) => (
+                  <i key={i} className="fas fa-star"></i>
+                ))}
+              </div>
+              <p className="comment">"{review.comment}"</p>
+              <div className="client-info">
+                <h4>{review.name}</h4>
+                <span>{review.role}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="testimonials-track reverse">
+          {allReviewsTrack2.map((review, index) => (
+            <div key={`t2-${review.id}-${index}`} className="testimonial-card">
               <div className="rating">
                 {[...Array(review.rating)].map((_, i) => (
                   <i key={i} className="fas fa-star"></i>
