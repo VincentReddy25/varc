@@ -44,10 +44,12 @@ V-Arc Construction is a premium construction and architecture portfolio website 
 ## 🏁 Getting Started
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - npm or yarn
 
 ### Installation
+
 1. Clone the repository:
    ```bash
    git clone [repository-url]
@@ -66,4 +68,5 @@ V-Arc Construction is a premium construction and architecture portfolio website 
 This project is built as a professional portfolio for V-Arc Construction. All rights reserved.
 
 ---
-Built with ❤️ by Vincent Reddy. Thanugundla
+
+Built with ❤️ by Vincent Reddy Thanugundla
